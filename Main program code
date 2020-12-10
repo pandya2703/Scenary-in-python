@@ -1,0 +1,107 @@
+# Hetanshu Pandya, 1 march 2020
+# a basic scenery with a little animation
+
+# import pygame
+import pygame
+pygame.init()
+# define some colors
+white = (255,255,255)
+black = (0,0,0)
+green = (0,255,10)
+sky_blue = (135,206,235)
+brown = (165,42,42)
+yellow = (255,255,0)
+light_grey = (211,211,211)
+blue = (0,0,128)
+orange = (255,165,0)
+
+# open a window and give it a name
+size = (900, 600)
+screen = pygame.display.set_mode(size)
+
+pygame.display.set_caption("Beautiful landscape")
+clock = pygame.time.Clock()
+# set a variable exit and set it as true
+exit = True
+
+# set variables for x and y positions of the sun
+sun_x = 10
+sun_y = 100
+
+# set directions for sun x and y
+sun_change_x = 2
+
+
+######################## Main program loop ###########################
+
+# create a while loop for the window to stay up until the user presses exit
+while exit == True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit = False
+
+    sun_x += sun_change_x
+
+
+    # start drawing all the landscape
+    # day view
+    screen.fill(sky_blue)
+
+
+    # evening view
+    if sun_x > 400:
+        screen.fill(orange)
+
+        # The sun
+    pygame.draw.circle(screen, yellow, [sun_x, sun_y], 40)
+    if sun_x == 950:
+        sun_change_x *= 0
+
+    # nigh view
+    if sun_x > 650:
+        screen.fill(blue)
+
+        # clouds shapes
+    pygame.draw.ellipse(screen, white, [200, 50, 150, 80], 0)
+    pygame.draw.ellipse(screen, white, [200, 40, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [240, 30, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [280, 30, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [320, 40, 40, 40], 0)
+    pygame.draw.ellipse(screen, white, [325, 60, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [310, 80, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [280, 90, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [240, 90, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [200, 90, 50, 50], 0)
+    pygame.draw.ellipse(screen, white, [180, 60, 50, 50], 0)
+
+    pygame.draw.rect(screen, green, [0, 400, 900,600],0)
+    # left to right
+    # 1st tree shapes
+    pygame.draw.rect(screen, brown, [40, 350, 20, 90],0)
+    pygame.draw.polygon(screen, green, [(10,350), (90,350), (50,300)],0)
+    pygame.draw.polygon(screen, green, [(10, 320), (90, 320), (50, 250)], 0)
+    # 2nd tree shapes
+    pygame.draw.rect(screen, brown, [140, 350, 20, 90], 0)
+    pygame.draw.polygon(screen, green, [(110, 350), (185, 350), (150, 300)], 0)
+    pygame.draw.polygon(screen, green, [(110, 320), (185, 320), (150, 250)], 0)
+    # 3rd tree shapes
+    pygame.draw.rect(screen, brown, [740, 350, 20, 90], 0)
+    pygame.draw.polygon(screen, green, [(790, 350), (710, 350), (750, 300)], 0)
+    pygame.draw.polygon(screen, green, [(790, 320), (710, 320), (750, 250)], 0)
+    # 4th tree shapes
+    pygame.draw.rect(screen, brown, [840, 350, 20, 90], 0)
+    pygame.draw.polygon(screen, green, [(810, 350), (890, 350), (850, 300)], 0)
+    pygame.draw.polygon(screen, green, [(810, 320), (890, 320), (850, 250)], 0)
+
+
+
+
+    # Gazebo shapes
+
+    pygame.draw.rect(screen, black, [350, 330, 10, 100], 0)
+    pygame.draw.rect(screen, black, [550, 330, 10, 100], 0)
+    pygame.draw.polygon(screen, brown, [(350, 330,), (450, 250), (560,330)], 0)
+
+    pygame.display.flip()
+
+    clock.tick(60)
